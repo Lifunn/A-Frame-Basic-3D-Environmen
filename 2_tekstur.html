@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bagian 2 - Tekstur A-Frame</title>
+    <!-- Tambahkan library A-Frame -->
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <!-- Lantai polos -->
+      <a-plane 
+        rotation="-90 0 0" 
+        width="10" 
+        height="10" 
+        color="#7BC8A4">
+      </a-plane>
+
+      <!-- Kubus dengan TEKSTUR gambar -->
+      <a-box 
+        position="0 0.5 0"
+        rotation="0 45 0"
+        width="1" 
+        height="1" 
+        depth="1"
+        material="src: url(textures/Brick/roughness.jpg)">
+      </a-box>
+
+      <!-- Bola dengan tekstur lain -->
+      <a-sphere 
+        position="2 1 1" 
+        radius="1" 
+        material="src: url(textures\Brick\basecolor.jpg)">
+      </a-sphere>
+
+      <!-- Langit -->
+      <a-sky color="#ECECEC"></a-sky>
+    </a-scene>
+  </body>
+</html>

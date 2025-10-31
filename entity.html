@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bagian 5 - Entity di A-Frame</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <!-- Kotak -->
+      <a-entity
+        geometry="primitive: box; width: 1; height: 1; depth: 1"
+        material="color: tomato"
+        position="0 0.5 0">
+      </a-entity>
+
+      <!-- Bola -->
+      <a-entity
+        geometry="primitive: sphere; radius: 1"
+        material="color: blue"
+        position="0 0.95 2">
+      </a-entity>
+
+      <!-- Silinder -->
+      <a-entity
+        geometry="primitive: cylinder; radius: 0.5; height: 1.5"
+        material="color: yellow"
+        position="0 0.75 -2">
+      </a-entity>
+
+      <!-- Lantai -->
+      <a-entity
+        geometry="primitive: plane; width: 10; height: 10"
+        material="color: lightgreen"
+        rotation="-90 0 0">
+      </a-entity>
+
+      <!-- Langit -->
+      <a-entity
+        geometry="primitive: sphere; radius: 5000"
+        material="color: #ECECEC; side: back">
+      </a-entity>
+    </a-scene>
+  </body>
+</html>

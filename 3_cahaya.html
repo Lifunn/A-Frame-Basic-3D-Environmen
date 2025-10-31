@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Ruangan dengan Lantai Hitam</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <!-- Cahaya lembut -->
+      <a-light type="ambient" color="#222"></a-light>
+      <a-light type="point" position="0 3 0" intensity="1" color="#ffffff"></a-light>
+      <a-entity light="type: spot; color: #ffffff; intensity: 1.5; angle:40; distance: 8" position="0 2.5 0 rotation="-90 0 0"></a-entity>
+
+
+      <!-- Dinding -->
+      <a-plane position="0 2 -5" rotation="0 0 0" width="10" height="4" color="#222"></a-plane>
+      <a-plane position="5 2 0" rotation="0 -90 0" width="10" height="4" color="#222"></a-plane>
+      <a-plane position="-5 2 0" rotation="0 90 0" width="10" height="4" color="#222"></a-plane>
+
+      <!-- Objek -->
+      <a-box position="-1 1 -3" color="#4CC3D9" shadow="receive: true; cast: true"></a-box>
+      <a-sphere position="2 1 -4" radius="1" color="#EF2D5E" shadow="receive: true; cast: true"></a-sphere>
+
+      <!-- Lantai hitam -->
+      <a-plane rotation="-90 0 0" width="10" height="10" material="color: #222"></a-plane>
+
+      <!-- Langit gelap -->
+      <a-sky color="#111"></a-sky>
+    </a-scene>
+  </body>
+</html>

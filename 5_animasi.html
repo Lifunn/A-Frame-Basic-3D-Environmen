@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Bagian 5 - Animasi di A-Frame (Terang)</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <!-- Cahaya lembut dan arah -->
+      <a-light type="ambient" color="#ffffff" intensity="0.8"></a-light>
+      <a-light type="directional" position="1 3 2" intensity="1"></a-light>
+
+      <!-- Lantai -->
+      <a-plane rotation="-90 0 0" width="10" height="10" color="#ddd"></a-plane>
+
+      <!-- Kubus berputar -->
+      <a-box
+        position="-1 1 -3"
+        color="#4CC3D9"
+        animation="property: rotation; to: 0 360 0; loop: true; dur: 3000; easing: linear"
+      ></a-box>
+
+      <!-- Bola memantul -->
+      <a-sphere
+        position="2 1 -4"
+        radius="0.8"
+        color="#EF2D5E"
+        animation="property: position; dir: alternate; dur: 2000; loop: true; to: 2 3 -4; easing: easeInOutSine"
+      ></a-sphere>
+
+      <!-- Objek berubah warna -->
+      <a-box
+        position="0 1 -2"
+        color="#00FF00"
+        depth="0.5"
+        height="0.5"
+        width="0.5"
+        animation="property: material.color; to: #FFFF00; dir: alternate; loop: true; dur: 1500"
+      ></a-box>
+
+      <a-sky color="#CCF0FF"></a-sky>
+    </a-scene>
+  </body>
+</html>
