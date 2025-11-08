@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>A-Frame — POV Mouse + WASD + Teks + Audio</title>
+  <script src="https://aframe.io/releases/1.4.1/aframe.min.js"></script>
+  <style>
+    body { margin: 0; overflow: hidden; }
+    #info {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.6);
+      color: white;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-family: sans-serif;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div id="info">🎮 Klik di area tampilan untuk mengaktifkan kontrol mouse + WASD</div>
+
+  <a-scene background="color: #ECECEC">
+    <!-- Musik latar -->
+    <a-entity 
+      sound="src: url(https://cdn.pixabay.com/download/audio/2023/03/02/audio_aa21ad6e2f.mp3?filename=calm-lofi-background-141998.mp3);
+             autoplay: true; loop: true; volume: 0.4;">
+    </a-entity>
+
+    <!-- Kamera -->
+    <a-entity 
+      camera 
+      look-controls="pointerLockEnabled: true" 
+      wasd-controls="acceleration: 30"
+      position="0 1.6 0">
+      
+      <a-entity cursor="fuse: false"
+                position="0 0 -0.8"
+                geometry="primitive: ring; radiusInner: 0.01; radiusOuter: 0.02"
+                material="color: #FFF; shader: flat; opacity: 0.9">
+      </a-entity>
+    </a-entity>
+
+    <!-- Cahaya dan lantai -->
+    <a-entity light="type: ambient; color: #888"></a-entity>
+    <a-entity light="type: directional; intensity: 0.6" position="1 2 1"></a-entity>
+    <a-plane rotation="-90 0 0" width="30" height="30" color="#7BC8A4"></a-plane>
+
+    <!-- Efek klik -->
+    <a-entity id="clickSound" sound="src: url(https://cdn.pixabay.com/download/audio/2022/03/15/audio_7e8a5f66a7.mp3?filename=click-124467.mp3); volume: 1;"></a-entity>
+
+    <!-- Objek interaktif -->
+    <a-box class="clickable" position="-2 1 -2" color="#4CC3D9"
+           event-set__mouseenter="scale: 1.2 1.2 1.2"
+           event-set__mouseleave="scale: 1 1 1"></a-box>
+
+    <a-sphere class="clickable" position="3 1 -2" color="#EF2D5E"
+              event-set__mouseenter="scale: 1.2 1.2 1.2"
+              event-set__mouseleave="scale: 1 1 1"></a-sphere>
+
+    <a-cylinder class="clickable" position="0 0.6 -2" color="#FFC65D"
+                event-set__mouseenter="scale: 1.1 1.1 1.1"
+                event-set__mouseleave="scale: 1 1 1"></a-cylinder>
+
+    <!-- Teks di dalam dunia -->
+    <a-entity position="0 5 -6">
+      <a-text value="Selamat Datang di Dunia 3D Broww!" color="#222" align="center" width="6"></a-text>
+    </a-entity>
+
+    <a-entity position="0 4.5 -6">
+      <a-text value="Gunakan W, A, S, D untuk bergerak dan Mouse untuk melihat sekitar" color="#333" align="center" width="8"></a-text>
+    </a-entity>
+
+    <a-entity position="0 4 -6">
+      <a-text value="Klik pada objek untuk mengubah warnanya!" color="#FF5722" align="center" width="6"></a-text>
+    </a-entity>
+
+    <script>
+      // Warna acak + efek klik
+      document.addEventListener('DOMContentLoaded', () => {
+        const clickSound = document.querySelector('#clickSound');
+        document.querySelectorAll('.clickable').forEach(el => {
+          el.addEventListener('click', () => {
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            el.setAttribute('color', randomColor);
+            clickSound.components.sound.playSound();
+          });
+        });
+      });
+    </script>
+  </a-scene>
+</body>
+</html>
